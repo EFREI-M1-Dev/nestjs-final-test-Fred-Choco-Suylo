@@ -23,17 +23,17 @@ npm ci
 
 <table>
       <tr>
-        <td>**Environnement**</td>
-        <td>**Démarrage du Serveur**</td>
-        <td>**Démarrage des Testsr**</td>
+        <td><b>ENVIRONNEMENT</b></td>
+        <td><b>DÉMARRAGE DU SERVEUR</b></td>
+        <td><b>DÉMARRAGE DES TESTS</b></td>
     </tr>
     <tr>
-        <td>**Unix/Linux**</td>
+        <td><b>Unix/Linux</b></td>
         <td>npm run start:postgres:linux</td>
         <td>npm run test:e2e:postgres:linux</td>
     </tr>
     <tr>
-        <td>**Windows**</td>
+        <td><b>Windows</b></td>
         <td>npm run start:postgres:windows</td>
         <td>npm run test:e2e:postgres:windows</td>
     </tr>
