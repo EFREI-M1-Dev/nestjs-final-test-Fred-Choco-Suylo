@@ -1,4 +1,47 @@
-# Évaluation finale
+# NestJS Évaluation finale
+- Frédéric DABADIE
+- Louis LUBINEAU 
+- Théo RICHARD
+
+# Installation 
+- Clone du repository :
+```batch 
+git clone https://github.com/EFREI-M1-Dev/nestjs-final-test-Fred-Choco-Suylo.git
+```
+- Entrée dans le projet :
+```batch 
+cd nestjs-final-test-Fred-Choco-Suylo
+```
+- Installer les packages du projet :
+```batch 
+npm ci
+```
+
+# Démarrer le Serveur et les Tests
+
+⚠️**Ne pas oublier d'[installer](https://www.docker.com/products/docker-desktop/) et de démarrer Docker Desktop**⚠️ 
+
+<table>
+      <tr>
+        <td>**Environnement**</td>
+        <td>**Démarrage du Serveur**</td>
+        <td>**Démarrage des Testsr**</td>
+    </tr>
+    <tr>
+        <td>**Unix/Linux**</td>
+        <td>npm run start:postgres:linux</td>
+        <td>npm run test:e2e:postgres:linux</td>
+    </tr>
+    <tr>
+        <td>**Windows**</td>
+        <td>npm run start:postgres:windows</td>
+        <td>npm run test:e2e:postgres:windows</td>
+    </tr>
+</table>
+
+-----------------
+
+# Sujet de l'Évaluation finale
 Pour ce test final vous allez être évalués sur votre maîtrise du framework NestJS. Ce projet, qui est une TodoList et qu'il vous faudra dupliquer (fork), contient un certain nombre de tests automatisés. Chacun d'entre eux couvre une fonctionnalité spécifique : création d'un utilisateur, création d'une tâche, vérification que le serveur renvoie une erreur dans tel ou tel cas etc.
 
 🎯 **Votre objectif est simple :** faire passer tous ces tests en implémentant vous-mêmes ces fonctionnalités.
@@ -79,3 +122,8 @@ Les tests utilisés pour vous noter sont localisés dans le dossier `test`. Cons
 Pour lancer ces tests, utilisez le script npm de votre choix : `npm run test:e2e:mongodb` ou `npm run test:e2e:postgres` (ces scripts démarrent une base de données, puis lancent les tests e2e).
 
 NB : Pour les besoins de cette évaluation, vous noterez peut-être que le code des tests e2e n'est pas spécialement clean. Ne faites pas ça chez vous.
+
+
+## Auteur
+[> Fredray-21](https://github.com/Fredray-21)
+
