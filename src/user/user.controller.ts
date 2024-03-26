@@ -1,4 +1,11 @@
-import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Get,
+    NotFoundException,
+    Param,
+    Post,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 
 @Controller()
@@ -23,6 +30,4 @@ export class UserController {
     async addUser(@Body('email') email: string) {
         return this.userService.addUser(email);
     }
-
-
 }
