@@ -39,6 +39,16 @@ npm ci
     </tr>
 </table>
 
+
+# Développement :
+### Pour exécuter un test seul
+```batch
+npm run test:e2e:single -- --testNamePattern="LeNomDuTest"
+```
+Exemple:
+```batch
+npm run test:e2e:single -- --testNamePattern="should return an HTTP error status 400 when given userId is not valid"
+```
 -----------------
 
 # Sujet de l'Évaluation finale
