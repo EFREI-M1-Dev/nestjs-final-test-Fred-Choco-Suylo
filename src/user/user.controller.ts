@@ -26,7 +26,7 @@ export class UserController {
         return user;
     }
 
-    @Post('')
+    @Post()
     async addUser(@Body('email') email: string) {
         return this.userService.addUser(email);
     }

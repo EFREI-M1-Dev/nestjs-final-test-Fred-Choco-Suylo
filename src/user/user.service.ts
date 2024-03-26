@@ -1,10 +1,11 @@
-import { Injectable, NotImplementedException } from '@nestjs/common';
-import { PrismaService } from 'src/infrastructure/database/prisma.service';
-import { User, Prisma } from '@prisma/client';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../infrastructure/database/prisma.service';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class UserService {
-    constructor(private readonly prisma: PrismaService) {}
+    constructor(private readonly prisma: PrismaService) {
+    }
 
     async addUser(email: string): Promise<void> {
         await this.prisma.user.create({
@@ -17,16 +18,16 @@ export class UserService {
     }
 
     async getUser(email: string): Promise<User> {
-        const user = await this.prisma.user.findUnique({
+        return this.prisma.user.findUnique({
             where: {
                 email: email,
             },
         });
-        return user;
     }
 
     async resetData(): Promise<void> {
-        throw new NotImplementedException();
+        await this.prisma.user.deleteMany();
+        return;
     }
 
     // TODO : A DELETE A LA FIN DU PROJECT, C'EST JUSTE POUR LE DEV
