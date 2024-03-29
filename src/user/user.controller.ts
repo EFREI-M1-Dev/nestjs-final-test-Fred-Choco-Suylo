@@ -1,11 +1,12 @@
 import {
-    Body,
+    BadRequestException,
+    Body, ConflictException,
     Controller,
     Get,
     NotFoundException,
     Param,
-    Post,
-} from '@nestjs/common';
+    Post
+} from "@nestjs/common";
 import { UserService } from './user.service';
 
 @Controller()
@@ -28,6 +29,15 @@ export class UserController {
 
     @Post()
     async addUser(@Body('email') email: string) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email)) {
+            throw new BadRequestException(`Email ${email} is not valid`);
+        }
+        if (await this.userService.getUser(email)) {
+            throw new ConflictException(
+                `User with email ${email} already exists`,
+            );
+        }
         return this.userService.addUser(email);
     }
 }
