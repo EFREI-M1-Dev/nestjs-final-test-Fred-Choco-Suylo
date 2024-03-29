@@ -1,12 +1,13 @@
 import {
     BadRequestException,
-    Body, ConflictException,
+    Body,
+    ConflictException,
     Controller,
     Get,
     NotFoundException,
     Param,
-    Post
-} from "@nestjs/common";
+    Post,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 
 @Controller()
