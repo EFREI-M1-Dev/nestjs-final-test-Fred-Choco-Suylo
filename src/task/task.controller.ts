@@ -1,4 +1,5 @@
 import {
+    BadRequestException,
     Body,
     Controller,
     Get,
@@ -7,6 +8,7 @@ import {
     Post,
 } from '@nestjs/common';
 import { TaskService } from './task.service';
+import { Task, User } from '@prisma/client';
 
 @Controller()
 export class TaskController {
@@ -18,7 +20,7 @@ export class TaskController {
     }
 
     @Get(':name')
-    async getTaskByName(@Param('name') name: string) {
+    async getTaskByName(@Param('name') name: Task['name']) {
         const task = await this.taskService.getTaskByName(name);
         if (!task) {
             throw new NotFoundException(`Task with name ${name} not found`);
@@ -28,15 +30,31 @@ export class TaskController {
 
     @Get('user/:userId')
     async getUserTasks(@Param('userId') userId: string) {
-        return this.taskService.getUserTasks(userId);
+        if(parseInt(userId) < 0 || isNaN(parseInt(userId))) {
+            throw new BadRequestException(`User id ${userId} is not valid`);
+        }
+        return this.taskService.getUserTasks(parseInt(userId));
     }
 
     @Post('')
     async addTask(
-        @Body('task') task: string,
-        @Body('userId') userId: number,
-        @Body('priority') priority: number,
+        @Body('name') name: string,
+        @Body('userId') userId: string,
+        @Body('priority') priority: string,
     ) {
-        return this.taskService.addTask(task, userId, priority);
+
+        if (!name || !userId || !priority) {
+            throw new BadRequestException('Missing required fields');
+        }
+
+        if (isNaN(parseInt(userId, 10)) || isNaN(parseInt(priority, 10))) {
+            throw new BadRequestException('Invalid userId or priority');
+        }
+
+        if (parseInt(priority, 10) < 0) {
+            throw new BadRequestException('Priority must be a positive number');
+        }
+      
+        return this.taskService.addTask(name, parseInt(userId, 10), parseInt(priority, 10));
     }
 }

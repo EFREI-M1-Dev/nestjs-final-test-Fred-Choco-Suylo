@@ -9,6 +9,7 @@ import {
     Post,
 } from '@nestjs/common';
 import { UserService } from './user.service';
+import { User } from '@prisma/client';
 
 @Controller()
 export class UserController {
@@ -20,7 +21,7 @@ export class UserController {
     }
 
     @Get(':email')
-    async getUser(@Param('email') email: string) {
+    async getUser(@Param('email') email: User['email']) {
         const user = await this.userService.getUser(email);
         if (!user) {
             throw new NotFoundException(`User with email ${email} not found`);
@@ -29,7 +30,7 @@ export class UserController {
     }
 
     @Post()
-    async addUser(@Body('email') email: string) {
+    async addUser(@Body('email') email: User['email']) {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailRegex.test(email)) {
             throw new BadRequestException(`Email ${email} is not valid`);

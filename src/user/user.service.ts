@@ -7,18 +7,17 @@ export class UserService {
     constructor(private readonly prisma: PrismaService) {
     }
 
-    async addUser(email: string): Promise<void> {
+    async addUser(email: User['email']): Promise<void> {
         await this.prisma.user.create({
             data: {
                 email: email,
             },
         });
-
         return;
     }
 
-    async getUser(email: string): Promise<User> {
-        return this.prisma.user.findUnique({
+    async getUser(email: User['email']): Promise<User> {
+        return await this.prisma.user.findUnique({
             where: {
                 email: email,
             },
