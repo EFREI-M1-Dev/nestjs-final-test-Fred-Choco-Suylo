@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../infrastructure/database/prisma.service';
-import { Task } from '@prisma/client';
+import { Task, User } from '@prisma/client';
 
 @Injectable()
 export class TaskService {
     constructor(private readonly prisma: PrismaService) {}
 
     async addTask(
-        name: string,
-        userId: number,
-        priority: number,
+        name: Task['name'],
+        userId: User['id'],
+        priority: Task['priority'],
     ): Promise<void> {
         await this.prisma.task.create({
             data: {
@@ -22,7 +22,7 @@ export class TaskService {
         return;
     }
 
-    async getTaskByName(name: string): Promise<Task> {
+    async getTaskByName(name: Task['name']): Promise<Task> {
         return this.prisma.task.findFirst({
             where: {
                 name: name,
@@ -30,10 +30,10 @@ export class TaskService {
         });
     }
 
-    async getUserTasks(userId: string): Promise<Task[]> {
+    async getUserTasks(userId: User['id']): Promise<Task[]> {
         return this.prisma.task.findMany({
             where: {
-                userId: parseInt(userId),
+                userId: userId,
             },
         });
     }
