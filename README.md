@@ -1,7 +1,7 @@
 # NestJS Évaluation finale
-- Frédéric DABADIE
-- Louis LUBINEAU 
-- Théo RICHARD
+- Frédéric DABADIE (Groupe 2)
+- Louis LUBINEAU (Groupe 3)
+- Théo RICHARD (Groupe 2)
 
 # Installation 
 - Clone du repository :
