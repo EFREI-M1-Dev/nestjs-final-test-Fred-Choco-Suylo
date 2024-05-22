@@ -39,6 +39,9 @@ npm ci
     </tr>
 </table>
 
+# NOTE : ⚠️Execution des test⚠️
+Les tests sont censés être exécutés dans deux bases de données différentes suite à la correction [**suivante**](https://github.com/pviara/nestjs-final-test/commit/bc9305d2888a89739121f878ff19db6c0693522f).  
+Dans notre cas, après avoir effectué des recherches de notre côté avant cette correction, nous avons utilisé l'argument **"--runInBand"** qui permet l'exécution des tests en séquence plutôt qu'en parallèle. Nous avons décidé de le conserver suite à nos échanges.
 
 # Développement :
 ### Pour exécuter un test seul
